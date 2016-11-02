@@ -108,7 +108,7 @@
     self.backgroundColor = [UIColor soundCloudBackgroundGrey];
 
     [self layoutTitleLabel];
-    [self layoutFbButton];
+    //[self layoutFbButton];
     [self layoutCredentialsView];
     [self layoutLoginButton];
     [self layoutTermsAndPrivacy];
@@ -352,10 +352,13 @@
 - (void)signInWithFacebook:(id)sender
 {
     NSDictionary *accountConfig = [[NXOAuth2AccountStore sharedStore] configurationForAccountType:kSCAccountType];
+   
     NSURL *URLToOpen = [NSURL URLWithString:[NSString stringWithFormat:@"%@/via/facebook?client_id=%@&redirect_uri=%@&display=popup&response_type=code",
                                                 accountConfig[kNXOAuth2AccountStoreConfigurationAuthorizeURL],
                                                 accountConfig[kNXOAuth2AccountStoreConfigurationClientID],
                                                 accountConfig[kNXOAuth2AccountStoreConfigurationRedirectURL]]];
+    
+
     [self.webView loadRequest:[NSURLRequest requestWithURL:URLToOpen]];
     // Dismiss Keyboard if it is still shown
     [[self firstResponderFromSubviews] resignFirstResponder];
