@@ -37,6 +37,7 @@
         self.layer.shadowOpacity = 0.55;
         self.layer.shadowOffset = CGSizeMake(0, 0);
 
+        /*
         // Cancel Button
         SCGradientButton *cancelButton = [[SCGradientButton alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.bounds) - 80.0,
                                                                                             6.0,
@@ -60,6 +61,7 @@
                forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:cancelButton];
         [cancelButton release];
+        */
         
         // The Cloud
         UIImageView *cloudImageView = [[UIImageView alloc] init];

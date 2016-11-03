@@ -125,8 +125,8 @@
 - (void)layoutTitleLabel
 {
     self.titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    self.titleLabel.numberOfLines = 2;
-    self.titleLabel.textAlignment = UITextAlignmentLeft;
+    self.titleLabel.numberOfLines = 0;
+    self.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.titleLabel.text = [NSString stringWithFormat:SCLocalizedString(@"credential_title", @"Title"),
                             [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"]];
     self.titleLabel.textColor = [UIColor soundCloudGrey];
@@ -259,16 +259,16 @@
 
 - (void)layoutSubviews;
 {
-    CGFloat titleLabelX = 18.0;
-    CGFloat titleLabelY = 13.0;
-    CGFloat titleLabelHeight = 40.0;
+    CGFloat titleLabelX = 16.0;
+    CGFloat titleLabelY = 48.0;
+    CGFloat titleLabelHeight = 60.0;
     CGFloat buttonHeight = 43.0;
 
     self.webView.frame = self.bounds;
 
     self.titleLabel.frame = CGRectMake(titleLabelX,
                                        titleLabelY,
-                                       self.bounds.size.width - self.frame.origin.x,
+                                       self.bounds.size.width - self.frame.origin.x-2*titleLabelX,
                                        titleLabelHeight);
 
     self.credentialsView.frame = CGRectMake(13.0,
