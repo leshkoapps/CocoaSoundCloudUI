@@ -88,6 +88,7 @@ NSUInteger const kSCPasswordTextFieldTag = 1002;
     self.usernameField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     self.usernameField.tag = kSCUsernameTextFieldTag;
     self.usernameField.returnKeyType = UIReturnKeyNext;
+    self.usernameField.tintColor = [UIColor soundCloudGrey];
     self.usernameField.cornerStyle = SCTextFieldCornerStyleTop;
     [self.usernameField addInnerShadow];
     [self addSubview:self.usernameField];
@@ -107,6 +108,7 @@ NSUInteger const kSCPasswordTextFieldTag = 1002;
     self.passwordField.clearButtonMode = UITextFieldViewModeAlways;
     self.passwordField.tag = kSCPasswordTextFieldTag;
     self.passwordField.returnKeyType = UIReturnKeyDone;
+    self.passwordField.tintColor = [UIColor soundCloudGrey];
     self.passwordField.cornerStyle = SCTextFieldCornerStyleBottom;
     [self addSubview:self.passwordField];
 }

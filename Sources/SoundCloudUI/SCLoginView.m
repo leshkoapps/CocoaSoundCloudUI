@@ -299,6 +299,7 @@
 
 - (void)askForOpeningURL:(NSURL*)URL
 {
+    /*
     [SCAlertView showAlertViewWithTitle:SCLocalizedString(@"open_in_safari_title", nil)
                                 message:SCLocalizedString(@"open_in_safari_message", nil)
                       cancelButtonTitle:SCLocalizedString(@"alert_cancel", nil)
@@ -308,6 +309,8 @@
                                           [[UIApplication sharedApplication] openURL:URL];
                                       }
                                   }];
+    */
+    [[UIApplication sharedApplication] openURL:URL];
 }
 
 #pragma mark Accessors
