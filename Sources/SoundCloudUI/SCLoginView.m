@@ -299,17 +299,6 @@
 
 - (void)askForOpeningURL:(NSURL*)URL
 {
-    /*
-    [SCAlertView showAlertViewWithTitle:SCLocalizedString(@"open_in_safari_title", nil)
-                                message:SCLocalizedString(@"open_in_safari_message", nil)
-                      cancelButtonTitle:SCLocalizedString(@"alert_cancel", nil)
-                      otherButtonTitles:[NSArray arrayWithObject:SCLocalizedString(@"alert_ok", nil)]
-                                  block:^(NSInteger buttonIndex, BOOL didCancel) {
-                                      if (!didCancel) {
-                                          [[UIApplication sharedApplication] openURL:URL];
-                                      }
-                                  }];
-    */
     [[UIApplication sharedApplication] openURL:URL];
 }
 
@@ -341,14 +330,6 @@
        (self.credentialsView.password.length != 0)) {
         [[SCSoundCloud shared] requestAccessWithUsername:self.credentialsView.username
                                                 password:self.credentialsView.password];
-    } else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:SCLocalizedString(@"credentials_error", @"Credentials Error")
-                                                        message:SCLocalizedString(@"credentials_error_message", @"Credentials Message Error")
-                                                       delegate:nil
-                                              cancelButtonTitle:SCLocalizedString(@"alert_ok", @"OK")
-                                              otherButtonTitles:nil];
-        [alert show];
-        [alert release];
     }
 }
 
