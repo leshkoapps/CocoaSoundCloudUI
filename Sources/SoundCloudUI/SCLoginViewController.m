@@ -121,9 +121,8 @@
 {
     [super viewDidLoad];
     self.loginView = [[[SCLoginView alloc] initWithFrame:self.view.bounds] autorelease];
+    self.loginView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.loginView.loginDelegate = self;
-    self.loginView.delegate = self;
-    self.loginView.contentSize = CGSizeMake(1.0, CGRectGetHeight(self.loginView.bounds));
     [self.loginView removeAllCookies];
     [self.view addSubview:self.loginView];
     
@@ -134,16 +133,7 @@
 - (void)viewWillAppear:(BOOL)animated;
 {
     [super viewWillAppear:animated];
-    SCConnectToSoundCloudTitleView *scTitleView = [[[SCConnectToSoundCloudTitleView alloc] initWithFrame:CGRectMake(0,
-                                                                                                                    0,
-                                                                                                                    CGRectGetWidth(self.view.bounds),
-                                                                                                                    44.0)] autorelease];
-
-    [self.view addSubview:scTitleView];
-    self.loginView.frame = CGRectMake(0,
-                                      scTitleView.frame.size.height,
-                                      CGRectGetWidth(self.view.bounds),
-                                      CGRectGetHeight(self.view.bounds) - scTitleView.frame.size.height);
+    [self.loginView login];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation;
@@ -151,7 +141,6 @@
     if ([UIDevice isIPad]) {
         return YES;
     }
-
     return UIInterfaceOrientationIsPortrait(toInterfaceOrientation);
 }
 
@@ -182,29 +171,6 @@
     [alert release];
 
     //[[self modalPresentingViewController] dismissModalViewControllerAnimated:YES];
-}
-
-- (void)updateScrollView
-{
-    if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation) ||
-        ![UIDevice isTallIphone]) {
-        UIView *firstResponderView = [self.loginView.credentialsView firstResponderFromSubviews];
-        CGRect bounds;
-        CGPoint position;
-        // Our TextField requires a y-offset (self.loginView.frame.origin.y)
-        if ([firstResponderView isKindOfClass:[UITextField class]]) {
-            bounds = [firstResponderView convertRect:firstResponderView.superview.superview.bounds
-                                              toView:self.view];
-            position = CGPointMake(self.loginView.credentialsView.bounds.origin.x,
-                                   bounds.origin.y - self.loginView.frame.origin.y);
-        } else {
-            position = self.view.bounds.origin;
-        }
-
-        [self.loginView setContentOffset:CGPointMake(position.x,
-                                                     position.y)
-                                animated:YES];
-    }
 }
 
 #pragma mark Private

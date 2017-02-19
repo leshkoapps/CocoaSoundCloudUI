@@ -19,19 +19,38 @@
  */
 
 #import <UIKit/UIKit.h>
-#import "SCCredentialsView.h"
+
 
 @protocol SCLoginViewProtocol;
 
-@interface SCLoginView : UIScrollView
+
+typedef void(^SCLoginWebViewLoadingBlock)(UIWebView *);
+typedef void(^SCLoginWebViewErrorBlock)(UIWebView *,NSError *);
+
+@interface SCLoginView : UIView
 
 @property (nonatomic, assign) id<SCLoginViewProtocol> loginDelegate;
-@property (nonatomic, assign) SCCredentialsView *credentialsView;
+
+@property (nonatomic,copy)SCLoginWebViewLoadingBlock webViewDidStartLoadingBlock;
+@property (nonatomic,copy)SCLoginWebViewLoadingBlock webViewDidFinishLoadingBlock;
+@property (nonatomic,copy)SCLoginWebViewErrorBlock webViewDidFailWithErrorBlock;
+
+@property (nonatomic, readonly, strong) UIWebView *webView;
+
 - (void)removeAllCookies;
-- (void)login:(id)sender;
+
+- (void)login;
+
+- (NSURL *)loginURL;
+
+
+
 @end
 
 @protocol SCLoginViewProtocol <NSObject>
+
 @optional
+
 - (void)loginView:(SCLoginView *)aLoginView didFailWithError:(NSError *)anError;
+
 @end
