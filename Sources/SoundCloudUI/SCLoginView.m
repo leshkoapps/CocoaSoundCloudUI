@@ -63,11 +63,8 @@
     
     self.webView = [[[UIWebView alloc] initWithFrame:self.bounds] autorelease];
     self.webView.delegate = self;
-    self.webView.backgroundColor = [UIColor whiteColor];
-    self.webView.alpha = 0.0;
-    self.webView.opaque = NO;
+    self.webView.backgroundColor = [UIColor soundCloudBackgroundGrey];
     [self addSubview:self.webView];
-    self.webView.backgroundColor = [UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:1.0];
     self.activityIndicator = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray] autorelease];
     self.activityIndicator.hidesWhenStopped = YES;
     [self addSubview:self.activityIndicator];
